@@ -2,4 +2,10 @@
 	"base.scss";
 
 @import
-	"bases/_core.scss"
+	"bases/_core.scss";
+
+@import
+	"components/_box.scss",
+	"components/_buttons.scss",
+	"components/_forms.scss",
+	"components/_header.scss";

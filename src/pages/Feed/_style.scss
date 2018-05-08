@@ -1,0 +1,32 @@
+@import "../../styles/bases/_variables.scss";
+
+.feed {
+	background-color: #fff;
+	border-radius: 3px;
+	box-shadow: 0 5px 16px -10px rgba(0,0,0,0.5);
+	min-height: 80px;
+	padding: 20px;
+	.feed__title {
+		font-family: "proxima-semiBold";
+		margin-bottom: 15px;
+	}
+	.feed__content {
+		color: $grey;
+		font-size: 15px;
+	}
+	.author-image {
+		float: left;
+		height: 40px;
+		width: 40px;
+		object-fit: cover;
+	}
+	.feed__author {
+		color: $dark_grey;
+		float: left;
+		margin-left: 10px;
+		.date {
+			color: $grey;
+			font-size: 12px;
+		}
+	}
+}
