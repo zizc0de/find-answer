@@ -48,7 +48,6 @@ module.exports = {
 		app: './src/index.js'
 	},
 	devServer: {
-		contentBase: './dist',
 		compress: true,
 		hot: true,
 		port: port,
@@ -69,6 +68,7 @@ module.exports = {
 	],
 	output: {
 		filename: '[name].bundle.js',
-		path: path.resolve(__dirname, 'dist')
+		path: path.resolve(__dirname, 'dist'),
+		publicPath: '/'
 	}
 };
