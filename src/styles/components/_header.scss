@@ -2,10 +2,11 @@
 	background-color: #FFFFFF;
 	box-shadow: 0 0 10px 0 rgba(43,43,43,.24);
 	min-height: 70px;
-	padding-left: 0;
-	padding-right: 0;
+	padding-left: 50px;
+	padding-right: 50px;
 	.nav-item {
 		.nav-link {
+			color: $grey;
 		}
 	}
 }

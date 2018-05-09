@@ -1,7 +1,7 @@
 .btn {
 	font-size: 14px;
 	&.btn-md {
-		min-width: 130px;
+		min-width: 100px;
 	}
 	&.btn-shadow {
 		box-shadow: 0 5px 16px -10px rgba(0,0,0,0.5);
@@ -10,11 +10,22 @@
 
 .btn-base {
 	background-color: $primary_color;
-	color: #FFFFFF;
+	color: #fff;
 	&:hover,
 	&:focus {
-		background-color: #7e6ba8;
-		color: #FFFFFF;
+		background-color: #6f35d6;
+		color: #fff;
+	}
+}
+
+.btn-outline-base {
+	background-color: #fff;
+	border-color: $primary_color;
+	color: $primary_color;
+	&:hover,
+	&:focus {
+		background-color: $primary_color;
+		color: #fff;
 	}
 }
 

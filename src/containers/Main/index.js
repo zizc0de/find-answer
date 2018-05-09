@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
 
-class Main extends Component {
+class MainLayout extends Component {
 	render() {
 		return (
 			<div>
@@ -14,4 +14,4 @@ class Main extends Component {
 	}
 }
 
-export default Main;
+export default MainLayout;

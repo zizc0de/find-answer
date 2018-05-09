@@ -1,9 +1,36 @@
 html,
 body{
 	background-color: #f3f5f7;
+	color: $dark_grey;
 	font-family: "proxima-regular";
 }
 
 #main {
-	margin-top: 120px;
+	margin-top: 100px;
+	margin-bottom: 50px;
+}
+
+a {
+	text-decoration: none;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.material-icons {
+	vertical-align: middle;
+}
+
+.dropdown-toggle {
+	&.non-caret:after {
+		display: none;
+	}
+}
+
+.valign-center {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 100%;
 }

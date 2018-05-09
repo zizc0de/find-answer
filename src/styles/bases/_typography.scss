@@ -1,7 +1,24 @@
+$sizes:
+"12" 12px,
+"14" 14px,
+"16" 16px,
+"18" 18px,
+"30" 30px;
+
 .text-bold{
 	font-family: "proxima-bold";
 }
 
 .text-semiBold{
 	font-family: "proxima-semiBold";
+}
+
+a {
+	color: $dark_grey;
+}
+
+@each $i in $sizes{
+	.font-#{nth($i, 1)} {
+		font-size: nth($i, 2);
+	}
 }

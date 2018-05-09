@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import 'bootstrap/scss/bootstrap.scss';
+import 'material-icons/iconfont/material-icons.scss';
 import './styles/app.scss';
 
 import App from './App';

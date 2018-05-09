@@ -1,0 +1,19 @@
+$colours:
+"primary" $primary_color,
+"dark-grey" $dark_grey,
+"grey" $grey,
+"secondary" $secondary_color;
+
+@each $i in $colours{
+	.bg-#{nth($i, 1)} {
+		background: nth($i, 2);
+	}
+	.color-#{nth($i, 1)} {
+		color:nth($i, 2);
+	}
+	.to-#{nth($i, 1)} {
+		&:hover{
+			color:nth($i, 2);
+		}
+	}
+}
