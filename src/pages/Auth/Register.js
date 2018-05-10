@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-
 import { Link, withRouter } from 'react-router-dom';
-import { AuthLayout as Layout } from 'containers';
 
 import { auth } from 'utils/firebase';
+
+import { AuthLayout as Layout } from 'containers';
 
 const byPropKey = (propName, value) => () => ({
 	[propName]: value
@@ -60,7 +60,6 @@ class Register extends Component {
 				}
 			});			
 		});
-
 	}
 
 	render() {
@@ -82,10 +81,10 @@ class Register extends Component {
 					</div>
 				</div>
 				{
-				error &&
+					error &&
 					<div className="row">
 						<div className="col-12">
-							<div class="alert alert-danger">
+							<div className="alert alert-danger">
 								{ error && <p className="mb-0">{error.message}</p> }						
 							</div>
 						</div>

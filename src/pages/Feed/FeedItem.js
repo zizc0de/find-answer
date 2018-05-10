@@ -23,7 +23,7 @@ class FeedItem extends Component {
 						</div>
 					</div>
 					<div className="col-md-4 text-md-right">
-						<button type="button" class="btn btn-base btn-rounded btn-shadow">Discuss</button>
+						<button type="button" className="btn btn-base btn-rounded btn-shadow">Discuss</button>
 					</div>
 				</div>
 			</div>
