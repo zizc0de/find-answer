@@ -1,34 +1,128 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
+import { Link, withRouter } from 'react-router-dom';
 import { AuthLayout as Layout } from 'containers';
 
-class Register extends Component {
+import { auth } from 'utils/firebase';
+
+const byPropKey = (propName, value) => () => ({
+	[propName]: value
+});
+
+const INITIAL_STATE = {
+  fullname: '',
+  email: '',
+  password: '',
+  button: {
+  	text: 'REGISTER',
+  	disabled: false
+  },
+  error: null,
+};
+
+class Register extends Component {	
+	constructor(props) {
+		super(props);
+		this.state = { ...INITIAL_STATE};
+	}	
+
+	onSubmit = (event) => {
+		event.preventDefault();
+		
+		const {
+			fullname,
+			email,
+			password
+		} = this.state;
+
+		const {
+			history
+		} = this.props;
+
+		this.setState({
+			button: {
+				text: 'LOADING...',
+				disabled: true
+			}
+		});
+
+		auth.userCreate(email, password)
+		.then(authUser => {
+			this.setState(() => ({ ...INITIAL_STATE }));
+			history.push('/login');
+		})
+		.catch(error => {
+			this.setState(byPropKey('error', error));
+			this.setState({
+				button: {
+					text: 'REGISTER',
+					disabled: false
+				}
+			});			
+		});
+
+	}
+
 	render() {
+		const {
+			fullname,
+			email,
+			password,
+			error
+		} = this.state;
+
+		const isInvalid = fullname === '' || email === '' || password === '' || this.state.button.disabled;
+
 		return (
 			<Layout>
-				<div className="row">
+				<div className="row mb-5">
 					<div className="col-12 text-center">
 						<h5 className="text-semiBold">Register your account!</h5>
 						<p className="font-14">Enter your details below.</p>
 					</div>
 				</div>
-				<div className="row mt-5">
+				{
+				error &&
+					<div className="row">
+						<div className="col-12">
+							<div class="alert alert-danger">
+								{ error && <p className="mb-0">{error.message}</p> }						
+							</div>
+						</div>
+					</div>
+				}
+				<div className="row">
 					<div className="col-12">
-						<form>
+						<form onSubmit={this.onSubmit}>
 							<div className="form-group">
 								<label>Email Address</label>
-								<input type="text" className="form-control form-control-lg" />
+								<input
+								type="text"
+								className="form-control form-control-lg"
+								value={email}
+								onChange={event => this.setState(byPropKey('email', event.target.value))}
+								/>
 							</div>
 							<div className="form-group">
 								<label>Your Name</label>
-								<input type="text" className="form-control form-control-lg" />
+								<input
+								type="text"
+								className="form-control form-control-lg"
+								value={fullname}
+								onChange={event => this.setState(byPropKey('fullname', event.target.value))}
+								/>
 							</div>							
 							<div className="form-group">
 								<label>Password</label>
-								<input type="password" className="form-control form-control-lg" />
+								<input
+								type="password"
+								className="form-control form-control-lg"
+								value={password}
+								onChange={event => this.setState(byPropKey('password', event.target.value))}
+								/>
 							</div>
 							<div className="form-group mt-5">
-								<button type="button" className="btn btn-lg btn-rounded btn-block btn-base">REGISTER</button>
+								<button type="submit" className="btn btn-lg btn-rounded btn-block btn-base" disabled={isInvalid}>{this.state.button.text}</button>
 							</div>
 						</form>
 					</div>
@@ -43,4 +137,4 @@ class Register extends Component {
 	}
 }
 
-export default Register;
+export default withRouter(Register);

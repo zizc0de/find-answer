@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import logo from 'assets/images/logo/logo.png';
+
 class Header extends Component {
 	render() {
 		return (
 			<nav className="navbar navbar-expand-lg navbar-white fixed-top">
 				<div className="container-fluid">
-					<Link className="navbar-brand" to="/feed">PAPR.</Link>
+					<Link className="navbar-brand" to="/feed">
+						<img src={logo} className="img-fluid" />
+					</Link>
 					<div className="collapse navbar-collapse" id="navbarCollapse">					
 						<ul className="navbar-nav ml-auto">
 							<li className="nav-item mr-2">

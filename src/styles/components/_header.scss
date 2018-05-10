@@ -12,8 +12,9 @@
 }
 
 .navbar-brand {
-	color: $primary_color !important;
-	font-size: 25px;
+	img {
+		height: 30px;
+	}
 }
 
 .navbar__logo {
