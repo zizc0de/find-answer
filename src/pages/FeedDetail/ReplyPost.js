@@ -21,7 +21,7 @@ class ReplyPost extends Component {
 					<div className="col-12">
 						<textarea className="form-control pl-0" placeholder="Write a response..." rows="4" style={{ border: 'none', resize: 'none' }}></textarea>
 						<button className="btn btn-md btn-rounded btn-outline-base mr-3">Reply</button>
-						<button className="btn btn-md btn-rounded btn-sencodary">Cancel</button>
+						<button className="btn btn-md btn-rounded btn-grey">Cancel</button>
 					</div>
 				</div>
 			</div>

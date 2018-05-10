@@ -6,7 +6,7 @@ class FeedItem extends Component {
 	render() {
 		return (
 			<div className="feed">
-				<Link to="/feed/detail" className="to-secondary">
+				<Link to="/feed/detail" className="to-primary">
 					<h5 className="feed__title">Lorem ipsum dollar sit amet</h5>
 				</Link>
 				<div className="feed__content">

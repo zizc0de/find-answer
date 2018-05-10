@@ -1,7 +1,11 @@
 .btn {
 	font-size: 14px;
+	letter-spacing: 1px;
 	&.btn-md {
 		min-width: 100px;
+	}
+	&.btn-lg {
+		line-height: 3em;
 	}
 	&.btn-shadow {
 		box-shadow: 0 5px 16px -10px rgba(0,0,0,0.5);
@@ -26,6 +30,27 @@
 	&:focus {
 		background-color: $primary_color;
 		color: #fff;
+	}
+}
+
+.btn-outline-transparent {
+	background: transparent;
+	border-color: #fff;
+	color: #fff;
+	&:hover,
+	&:focus {
+		background-color: #fff;
+		color: $primary_color;
+	}
+}
+
+.btn-grey {
+	background-color: #ddd;
+	color: #000;
+	&:hover,
+	&:focus {
+		background-color: #cbcbcb;
+		color: #000;
 	}
 }
 

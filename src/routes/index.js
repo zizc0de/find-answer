@@ -1,6 +1,16 @@
-import { Home, Feed, FeedDetail, Profile, ProfileFeed } from 'pages';
+import { Login, Register, Home, Feed, FeedDetail, Profile, ProfileFeed } from 'pages';
 
 const routes = [
+	{
+		exact: true,
+		path: '/login',
+		component: Login
+	},
+	{
+		exact: true,
+		path: '/register',
+		component: Register
+	},
 	{
 		exact: true,
 		path: '/feed',
