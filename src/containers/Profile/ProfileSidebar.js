@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
+import { auth } from 'utils/firebase';
+
 import './_style.scss';
 
 class ProfileSidebar extends Component {
+
+	signOut = (event) => {
+		event.preventDefault();
+
+		const {
+			history
+		} = this.props;
+
+		const logout = auth.userLogout();
+		
+		if (logout) {			
+			history.push('/');
+		}
+	}
+
 	render() {
 		return (
 			<div className="profile-sidebar">
@@ -26,7 +44,7 @@ class ProfileSidebar extends Component {
 							<Link to="/profile/feed"><i className="material-icons">rss_feed</i> My Feed</Link>
 						</li>
 						<li>
-							<Link to=""><i className="material-icons">power_settings_new</i> Sign Out</Link>
+							<Link to="#" onClick={this.signOut}><i className="material-icons">power_settings_new</i> Sign Out</Link>
 						</li>
 					</ul>
 				</div>
@@ -35,4 +53,4 @@ class ProfileSidebar extends Component {
 	}
 }
 
-export default ProfileSidebar;
+export default withRouter(ProfileSidebar);
