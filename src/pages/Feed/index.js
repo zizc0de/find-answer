@@ -8,6 +8,7 @@ import withAuthorization from 'components/Session/withAuthorization';
 import AuthUserContext from 'components/Session/AuthUserContext';
 
 class Feed extends Component {
+
 	render() {
 		return (
 			<Layout>
