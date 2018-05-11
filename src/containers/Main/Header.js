@@ -8,7 +8,7 @@ class Header extends Component {
 		return (
 			<nav className="navbar navbar-expand-lg navbar-white fixed-top">
 				<div className="container-fluid">
-					<Link className="navbar-brand" to="/feed">
+					<Link className="navbar-brand" to="/questions">
 						<img src={logo} className="img-fluid" />
 					</Link>
 					<div className="collapse navbar-collapse" id="navbarCollapse">					

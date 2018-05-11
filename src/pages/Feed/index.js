@@ -5,20 +5,25 @@ import FeedPost from './FeedPost';
 import FeedItem from './FeedItem';
 
 import withAuthorization from 'components/Session/withAuthorization';
+import AuthUserContext from 'components/Session/AuthUserContext';
 
 class Feed extends Component {
 	render() {
 		return (
 			<Layout>
-				<div className="row">
-					<div className="col-lg-6 mb-3 mb-lg-0">
-						<FeedPost />
-						<FeedItem />
-					</div>
-					<div className="col-lg-6">
-						Sidebar content
-					</div>
-				</div>
+				<AuthUserContext.Consumer>
+					{authUser =>
+						<div className="row">
+							<div className="col-lg-6 mb-3 mb-lg-0">
+								<FeedPost userUid={authUser.uid} />
+								<FeedItem />
+							</div>
+							<div className="col-lg-6">
+								sidebar content
+							</div>
+						</div>
+					}
+				</AuthUserContext.Consumer>
 			</Layout>
 		);
 	}

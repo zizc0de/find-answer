@@ -13,12 +13,12 @@ const routes = [
 	},
 	{
 		exact: true,
-		path: '/feed',
+		path: '/questions',
 		component: Feed
 	},
 	{
 		exact: true,
-		path: '/feed/detail',
+		path: '/question/detail',
 		component: FeedDetail
 	},
 	{
@@ -28,7 +28,7 @@ const routes = [
 	},
 	{
 		exact: true,
-		path: '/profile/feed',
+		path: '/profile/questions',
 		component: ProfileFeed
 	},
 	{

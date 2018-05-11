@@ -47,7 +47,7 @@ class Login extends Component {
 		auth.userLogin(email, password)
 		.then(() => {
 			this.setState(() => ({ ...INITIAL_STATE }));
-			history.push('/feed');
+			history.push('/questions');
 		})
 		.catch(error => {
 			this.setState(byPropkey('error', error));
