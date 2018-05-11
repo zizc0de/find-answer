@@ -10,14 +10,14 @@ const byPropKey = (propName, value) => () => ({
 });
 
 const INITIAL_STATE = {
-  fullname: '',
-  email: '',
-  password: '',
-  button: {
-  	text: 'REGISTER',
-  	disabled: false
-  },
-  error: null,
+	fullname: '',
+	email: '',
+	password: '',
+	button: {
+		text: 'REGISTER',
+		disabled: false
+	},
+	error: null,
 };
 
 class Register extends Component {	
@@ -48,10 +48,10 @@ class Register extends Component {
 
 		auth.userCreate(email, password)
 		.then(authUser => {
-			db.doCreateUser(authUser.uid, fullname, email)
+			db.doCreateUser(authUser.user.uid, fullname, email)
 			.then(() => {
 				this.setState(() => ({ ...INITIAL_STATE }));
-				history.push('/feed');				
+				history.push('/feed');
 			})
 			.catch(error => {
 				this.setState(byPropKey('error', error));
@@ -80,65 +80,65 @@ class Register extends Component {
 
 		return (
 			<Layout>
-				<div className="row mb-5">
-					<div className="col-12 text-center">
-						<h5 className="text-semiBold">Register your account!</h5>
-						<p className="font-14">Enter your details below.</p>
-					</div>
-				</div>
-				{
-					error &&
-					<div className="row">
-						<div className="col-12">
-							<div className="alert alert-danger">
-								{ error && <p className="mb-0">{error.message}</p> }						
-							</div>
-						</div>
-					</div>
-				}
+			<div className="row mb-5">
+			<div className="col-12 text-center">
+			<h5 className="text-semiBold">Register your account!</h5>
+			<p className="font-14">Enter your details below.</p>
+			</div>
+			</div>
+			{
+				error &&
 				<div className="row">
-					<div className="col-12">
-						<form onSubmit={this.onSubmit}>
-							<div className="form-group">
-								<label>Email Address</label>
-								<input
-								type="text"
-								className="form-control form-control-lg"
-								value={email}
-								onChange={event => this.setState(byPropKey('email', event.target.value))}
-								/>
-							</div>
-							<div className="form-group">
-								<label>Your Name</label>
-								<input
-								type="text"
-								className="form-control form-control-lg"
-								value={fullname}
-								onChange={event => this.setState(byPropKey('fullname', event.target.value))}
-								/>
-							</div>							
-							<div className="form-group">
-								<label>Password</label>
-								<input
-								type="password"
-								className="form-control form-control-lg"
-								value={password}
-								onChange={event => this.setState(byPropKey('password', event.target.value))}
-								/>
-							</div>
-							<div className="form-group mt-5">
-								<button type="submit" className="btn btn-lg btn-rounded btn-block btn-base" disabled={isInvalid}>{this.state.button.text}</button>
-							</div>
-						</form>
-					</div>
+				<div className="col-12">
+				<div className="alert alert-danger">
+				{ error && <p className="mb-0">{error.message}</p> }						
 				</div>
-				<div className="row mt-2">
-					<div className="col-12 text-center">
-						<p>Already have an account? <Link to="/login" className="text-bold color-primary to-primary-dark">Sign In</Link></p>
-					</div>
 				</div>
+				</div>
+			}
+			<div className="row">
+			<div className="col-12">
+			<form onSubmit={this.onSubmit}>
+			<div className="form-group">
+			<label>Email Address</label>
+			<input
+			type="text"
+			className="form-control form-control-lg"
+			value={email}
+			onChange={event => this.setState(byPropKey('email', event.target.value))}
+			/>
+			</div>
+			<div className="form-group">
+			<label>Your Name</label>
+			<input
+			type="text"
+			className="form-control form-control-lg"
+			value={fullname}
+			onChange={event => this.setState(byPropKey('fullname', event.target.value))}
+			/>
+			</div>							
+			<div className="form-group">
+			<label>Password</label>
+			<input
+			type="password"
+			className="form-control form-control-lg"
+			value={password}
+			onChange={event => this.setState(byPropKey('password', event.target.value))}
+			/>
+			</div>
+			<div className="form-group mt-5">
+			<button type="submit" className="btn btn-lg btn-rounded btn-block btn-base" disabled={isInvalid}>{this.state.button.text}</button>
+			</div>
+			</form>
+			</div>
+			</div>
+			<div className="row mt-2">
+			<div className="col-12 text-center">
+			<p>Already have an account? <Link to="/login" className="text-bold color-primary to-primary-dark">Sign In</Link></p>
+			</div>
+			</div>
 			</Layout>
-		);
+			);
 	}
 }
 
