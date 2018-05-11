@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 
 import routes from './routes';
+import withAuthentication from 'components/Session/withAuthentication';
 
 class App extends Component {
 	render() {
@@ -16,4 +17,4 @@ class App extends Component {
 	}
 };
 
-export default App;
+export default withAuthentication(App);

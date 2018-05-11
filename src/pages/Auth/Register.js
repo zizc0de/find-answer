@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-import { auth } from 'utils/firebase';
+import { auth, db } from 'utils/firebase';
 
 import { AuthLayout as Layout } from 'containers';
 
@@ -48,8 +48,14 @@ class Register extends Component {
 
 		auth.userCreate(email, password)
 		.then(authUser => {
-			this.setState(() => ({ ...INITIAL_STATE }));
-			history.push('/login');
+			db.doCreateUser(authUser.uid, fullname, email)
+			.then(() => {
+				this.setState(() => ({ ...INITIAL_STATE }));
+				history.push('/feed');				
+			})
+			.catch(error => {
+				this.setState(byPropKey('error', error));
+			})
 		})
 		.catch(error => {
 			this.setState(byPropKey('error', error));

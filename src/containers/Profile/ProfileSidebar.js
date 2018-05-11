@@ -44,7 +44,7 @@ class ProfileSidebar extends Component {
 							<Link to="/profile/feed"><i className="material-icons">rss_feed</i> My Feed</Link>
 						</li>
 						<li>
-							<Link to="#" onClick={this.signOut}><i className="material-icons">power_settings_new</i> Sign Out</Link>
+							<Link to="" onClick={this.signOut}><i className="material-icons">power_settings_new</i> Sign Out</Link>
 						</li>
 					</ul>
 				</div>

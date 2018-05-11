@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+
 import { MainLayout as Layout } from 'containers';
 import FeedPost from './FeedPost';
 import FeedItem from './FeedItem';
+
+import withAuthorization from 'components/Session/withAuthorization';
 
 class Feed extends Component {
 	render() {
@@ -21,4 +24,6 @@ class Feed extends Component {
 	}
 }
 
-export default Feed;
+const authCondition = (authUser) => !!authUser;
+
+export default withAuthorization(authCondition)(Feed);
