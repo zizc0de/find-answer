@@ -3,23 +3,32 @@ import { Link } from 'react-router-dom';
 import './_style.scss';
 
 class FeedItem extends Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			detail: this.props.questions
+		}
+	}
+
 	render() {
+		const { questions: detail } = this.props;
+
 		return (
-			<div className="feed">
+			<div className="feed mb-3">
 				<Link to="/feed/detail" className="to-primary">
-					<h5 className="feed__title">Lorem ipsum dollar sit amet</h5>
+					<h5 className="feed__title">{detail.title}</h5>
 				</Link>
 				<div className="feed__content">
 					<p>
-						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.				
+						{detail.detail}
 					</p>
 				</div>
 				<div className="row mt-4">
 					<div className="col-md-8 mb-3 mb-md-0">
 						<img src={require('assets/images/profile.png')} className="img-fluid rounded-circle author-image" />
 						<div className="feed__author">
-							<p className="mb-0 mb-0 text-semiBold">Abdul Aziz</p>
-							<p className="mb-0 date">10/06/2018 06:00</p>
+							<p className="mb-0 mb-0 text-semiBold">{detail.fullname}</p>
+							<p className="mb-0 date">{detail.createdAt}</p>
 						</div>
 					</div>
 					<div className="col-md-4 text-md-right">

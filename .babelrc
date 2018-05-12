@@ -5,6 +5,7 @@
 		"root": ["./src"],
 		"pages": "./src/pages",
 		"containers": "./src/containers"
-	}]
+	}],
+	"lodash"
 	]
 }

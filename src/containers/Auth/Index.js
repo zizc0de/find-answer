@@ -17,11 +17,11 @@ class AuthLayout extends Component {
 							
 							<div className="row">
 								<div className="col-12 text-center">
-									<img src={require('assets/images/logo/logo_white.png')} className="img-fluid" style={{ marginTop: -200 }} />
+									<img src={require('assets/images/logo/logo_white.png')} className="img-fluid" />
 								</div>
 							</div>
 
-							<div className="row mt-5">
+							<div className="row" style={{marginTop: 80}}>
 								<div className="col-12 text-center">
 									<h2 className="text-white">Find your answer here!</h2>
 									<p className="text-white font-18">Interactive discussion platform to answer your questions.</p>

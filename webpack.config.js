@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 const host = 'localhost';
 const port = 4000;
@@ -54,6 +55,7 @@ module.exports = {
 		historyApiFallback: true
 	},
 	plugins: [
+	new LodashModuleReplacementPlugin,
 	new CleanWebpackPlugin(['dist']),
 	new webpack.NamedModulesPlugin(),
 	new webpack.HotModuleReplacementPlugin(),

@@ -21,9 +21,18 @@ class FeedPost extends Component {
 		};
 	}
 
+	resetButton = () => {
+		this.setState({
+			button: {
+				text: 'Share',
+				disabled: false
+			}
+		});	
+	}
+
 	onSubmit = (event) => {
 		event.preventDefault();
-		
+
 		const {
 			userUid,
 			title,
@@ -41,21 +50,13 @@ class FeedPost extends Component {
 		.then(() => {
 			this.setState(() => ({
 				title: '',
-				detail: '',
-				button: {
-					text: 'Share',
-					disabled: false
-				}				
+				detail: ''	
 			}));
+			this.resetButton();
 		})
 		.catch(error => {
 			this.setState(byPropKey('error', error));
-			this.setState({
-				button: {
-					text: 'Share',
-					disabled: false
-				}
-			});			
+			this.resetButton();			
 		});
 
 	}

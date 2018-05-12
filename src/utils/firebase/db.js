@@ -14,6 +14,12 @@ export const doCreateUser = (id, fullname, email) =>
 export const onceGetUsers = () =>
 	db.ref(`users`).once('value');
 
+export const getUserByUid = (uid) =>
+	db.ref(`users/${uid}`).once('value');
+
+export const usersRef = () =>
+	db.ref().child('users');
+	
 // QUESTIONS
 
 export const doCreateQuestion = (userUid, title, detail) =>
@@ -21,6 +27,12 @@ export const doCreateQuestion = (userUid, title, detail) =>
 		userUid,
 		title,
 		detail,
-		created_time: now,
-		updated_time: ''
+		createdAt: now,
+		updatedAt: ''
 	});
+
+export const onceGetQuestions = () =>
+	db.ref(`questions`).once('value');
+
+export const questionsRef = () =>
+	db.ref().child('questions');
