@@ -1,12 +1,56 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
 import { MainLayout as Layout } from 'containers';
 import ReplyPost from './ReplyPost';
 import ReplyList from './ReplyList';
+
 import './_style.scss';
 
+import { db } from 'utils/firebase';
+
 class FeedDetail extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			detail: {}
+		}
+	}
+
+	getUserById = (userId) => {
+		return new Promise(resolve => {
+			db.usersRef().child(userId).on('value', user => {resolve(user.val())});
+		});
+	};
+
+	fetch = (uid) => {
+		db.getQuestionByUid(uid).then(snap => {
+			let values = snap.val();
+			
+			this.getUserById(values.userUid)
+			.then((user) =>{
+				let data = {
+					key: uid,
+					fullname: user.fullname,
+					headline: user.headline,
+					...values
+				}
+				this.setState({
+					detail: data
+				})
+			})
+
+		})
+	}
+
+	componentDidMount() {
+		const { match: { params } } = this.props;
+		this.fetch(params.uid);
+	}
+
 	render() {
+		const { detail } = this.state;
+
 		return (
 			<Layout>
 				<div className="row">
@@ -17,23 +61,16 @@ class FeedDetail extends Component {
 								<div className="col-12">
 									<img src={require('assets/images/profile.png')} className="rounded-circle float-left" style={{ height: 65, width: 65, objectFit: 'cover' }} />
 									<div className="float-left ml-3">
-										<Link to="/u/zizcode" className="color-primary">
-											<p className="mb-0 text-semiBold">Abdul Aziz</p>
-										</Link>									
-										<p className="font-14 color-grey mb-0" style={{ marginBottom: -10 }}>Frontend Developer</p>
-										<p className="font-12 color-grey">10/05/2018 09:00</p>
+										<p className="mb-0 text-semiBold">{detail.fullname}</p>
+										<p className="font-14 color-grey mb-0" style={{ marginBottom: -10 }}>{detail.headline}</p>
+										<p className="font-12 color-grey">{detail.createdAt}</p>
 									</div>
 								</div>
 							</div>
 							<div className="row mt-4">
 								<div className="col-12">
-									<h2 className="text-bold">React app from scratch</h2>
-									<p>
-									If you just want to see what is react snd create small app you can use create-react-app. It’s not perfect choice for production because on real app you need to manage state, work with async actions (ajax requests)… In this case you mostly need webpack or other bundler. But for running your first hello world app on PC create-react-app is a good choise.
-									</p>
-									<p>
-									After installing node.js, npm helps you to install a new packages. To work with create-react-app you need to install it globally using next command:
-									</p>
+									<h2 className="text-bold">{detail.title}</h2>
+									<p>{detail.detail}</p>
 								</div>
 							</div>
 						</div>

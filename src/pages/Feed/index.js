@@ -25,7 +25,7 @@ class Feed extends Component {
 
 	fetch = () => {
 
-		db.questionsRef().once('value',snap => {
+		db.questionsRef().once('value', snap => {
 			let values = snap.val();
 			let questions = Object.keys(values).map(key => {
 				return {

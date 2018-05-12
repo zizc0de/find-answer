@@ -15,7 +15,7 @@ class FeedItem extends Component {
 
 		return (
 			<div className="feed mb-3">
-				<Link to="/feed/detail" className="to-primary">
+				<Link to={`/question/${detail.key}`} className="to-primary">
 					<h5 className="feed__title">{detail.title}</h5>
 				</Link>
 				<div className="feed__content">

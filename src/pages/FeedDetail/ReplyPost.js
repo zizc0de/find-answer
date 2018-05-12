@@ -10,9 +10,7 @@ class ReplyPost extends Component {
 						<div className="d-flex" style={{ flexFlow: 'row', alignItems: 'center' }}>
 							<img src={require('assets/images/profile.png')} className="rounded-circle" style={{ height: 40, width: 40, objectFit: 'cover' }} />
 							<div className="d-flex ml-3">
-								<Link to="/u/zizcode" className="color-primary">
-									<p className="mb-0 text-semiBold">Abdul Aziz</p>
-								</Link>
+								<p className="mb-0 text-semiBold">Abdul Aziz</p>
 							</div>
 						</div>
 					</div>

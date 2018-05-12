@@ -18,7 +18,7 @@ const routes = [
 	},
 	{
 		exact: true,
-		path: '/question/detail',
+		path: '/question/:uid',
 		component: FeedDetail
 	},
 	{

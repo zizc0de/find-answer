@@ -8,7 +8,8 @@ const now = moment(new Date()).format('MM/DD/YYYY hh:mm');
 export const doCreateUser = (id, fullname, email) =>
 	db.ref(`users/${id}`).set({
 		fullname,
-		email
+		email,
+		headline: ''
 	});
 
 export const onceGetUsers = () =>
@@ -30,6 +31,9 @@ export const doCreateQuestion = (userUid, title, detail) =>
 		createdAt: now,
 		updatedAt: ''
 	});
+
+export const getQuestionByUid = (uid) =>
+	db.ref(`questions/${uid}`).once('value');
 
 export const onceGetQuestions = () =>
 	db.ref(`questions`).once('value');

@@ -9,9 +9,7 @@ class ReplyList extends Component {
 					<div className="col-12">
 						<img src={require('assets/images/profile.png')} className="rounded-circle float-left" style={{ height: 40, width: 40, objectFit: 'cover' }} />
 						<div className="float-left ml-3">
-							<Link to="/u/zizcode" className="color-primary">
-								<p className="mb-0 text-semiBold">Abdul Aziz</p>
-							</Link>											
+							<p className="mb-0 text-semiBold">Abdul Aziz</p>
 							<p className="font-12 color-grey">10/05/2018 09:00</p>
 						</div>
 					</div>
