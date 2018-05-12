@@ -52,6 +52,9 @@ class FeedPost extends Component {
 				title: '',
 				detail: ''	
 			}));
+			if(typeof this.props.getData === 'function') {
+				this.props.getData();
+			}
 			this.resetButton();
 		})
 		.catch(error => {
