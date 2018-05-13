@@ -34,6 +34,7 @@ export const doCreateQuestion = (userUid, title, detail) =>
 		userUid,
 		title,
 		detail,
+		status: 'unsolved',
 		createdAt: now,
 		updatedAt: ''
 	});
@@ -46,3 +47,6 @@ export const onceGetQuestions = () =>
 
 export const questionsRef = () =>
 	db.ref().child('questions');
+
+export const getQuestionsByUser = (uid) =>
+	db.ref(`questions`).orderByChild('userUid').equalTo(uid).once('value');

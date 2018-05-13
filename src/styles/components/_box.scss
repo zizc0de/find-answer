@@ -13,4 +13,15 @@
 		margin-right: -20px;
 		padding: 0 20px 10px 20px;
 	}
+	.box-body{
+		&.flex {
+			display: flex;
+			flex-direction: column;
+		}
+		.flex-center {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+		}
+	}
 }

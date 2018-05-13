@@ -23,7 +23,8 @@ class ProfileSidebar extends Component {
 
 	render() {
 		const { authUser } = this.props;
-		
+		const { pathname } = this.props.location;
+
 		return (
 			<div className="profile-sidebar">
 				<div className="profile-sidebar__head">
@@ -39,10 +40,10 @@ class ProfileSidebar extends Component {
 				</div>
 				<div className="profile-sidebar__menu">
 					<ul>
-						<li className="active">
+						<li className={pathname == '/profile' ? 'active' : ''}>
 							<Link to="/profile"><i className="material-icons">account_box</i> Profile</Link>
 						</li>
-						<li>
+						<li className={pathname == '/profile/questions' ? 'active' : ''}>
 							<Link to="/profile/questions"><i className="material-icons">question_answer</i> My Questions</Link>
 						</li>
 						<li>

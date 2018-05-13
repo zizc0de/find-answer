@@ -91,7 +91,7 @@ class Profile extends Component {
 			<Layout>
 				<div className="box">
 					<div className="box-head">
-						<h5>Profile Detail</h5>
+						<h5 className="box-title">Profile Detail</h5>
 					</div>
 					<div className="box-body">
 
