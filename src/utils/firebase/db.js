@@ -50,3 +50,14 @@ export const questionsRef = () =>
 
 export const getQuestionsByUser = (uid) =>
 	db.ref(`questions`).orderByChild('userUid').equalTo(uid).once('value');
+
+// QUESTION RESPONSE
+
+export const doCreateResponse = (userUid, questionUid, response) =>
+	db.ref(`questions_reponse`).push({
+		userUid,
+		questionUid,
+		response,
+		vote: 0,
+		accepted: false
+	})

@@ -7,6 +7,7 @@ import ReplyList from './ReplyList';
 
 import './_style.scss';
 
+import withAuthorization from 'components/Session/withAuthorization';
 import { db } from 'utils/firebase';
 
 class FeedDetail extends Component {
@@ -50,7 +51,8 @@ class FeedDetail extends Component {
 
 	render() {
 		const { detail } = this.state;
-
+		const { authUser } = this.props;
+		
 		return (
 			<Layout>
 				<div className="row">
@@ -83,7 +85,7 @@ class FeedDetail extends Component {
 
 						<div className="row mb-5">
 							<div className="col-12">
-								<ReplyPost />
+								<ReplyPost authUser={authUser} questionUid={detail.key}/>
 							</div>
 						</div>
 
@@ -100,4 +102,6 @@ class FeedDetail extends Component {
 	}
 }
 
-export default FeedDetail;
+const authCondition = (authUser) => !!authUser;
+
+export default withAuthorization(authCondition)(FeedDetail);

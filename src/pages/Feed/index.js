@@ -5,7 +5,6 @@ import FeedPost from './FeedPost';
 import FeedItem from './FeedItem';
 
 import withAuthorization from 'components/Session/withAuthorization';
-import AuthUserContext from 'components/Session/AuthUserContext';
 
 import { db } from 'utils/firebase';
 
