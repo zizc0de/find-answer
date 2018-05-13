@@ -10,7 +10,6 @@ class FeedPost extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			userUid: this.props.userUid,
 			title: '',
 			detail: '',
 			button: {
@@ -34,10 +33,11 @@ class FeedPost extends Component {
 		event.preventDefault();
 
 		const {
-			userUid,
 			title,
 			detail
 		} = this.state;
+
+		const { userUid } = this.props;
 
 		this.setState({
 			button: {

@@ -1,4 +1,7 @@
 .form-control {
+	&.form-control-md {
+		line-height: 1.8em;	
+	}
 	&:focus {
 		border-color: $primary_color;
 		box-shadow: none;

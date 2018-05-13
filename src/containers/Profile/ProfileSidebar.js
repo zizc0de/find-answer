@@ -22,6 +22,8 @@ class ProfileSidebar extends Component {
 	}
 
 	render() {
+		const { authUser } = this.props;
+		
 		return (
 			<div className="profile-sidebar">
 				<div className="profile-sidebar__head">
@@ -30,8 +32,8 @@ class ProfileSidebar extends Component {
 							<img src={require('assets/images/profile.png')} className="img-fluid rounded-circle" />
 						</div>
 						<div className="profile-info">
-							<h5 className="text-white mb-0">Abdul Aziz</h5>
-							<small className="text-white">zizcode.exporadev@gmail.com</small>
+							<h5 className="text-white mb-0">{authUser.detail.fullname}</h5>
+							<small className="text-white">{authUser.detail.email}</small>
 						</div>
 					</div>
 				</div>
@@ -41,7 +43,7 @@ class ProfileSidebar extends Component {
 							<Link to="/profile"><i className="material-icons">account_box</i> Profile</Link>
 						</li>
 						<li>
-							<Link to="/profile/feed"><i className="material-icons">rss_feed</i> My Feed</Link>
+							<Link to="/profile/questions"><i className="material-icons">question_answer</i> My Questions</Link>
 						</li>
 						<li>
 							<Link to="" onClick={this.signOut}><i className="material-icons">power_settings_new</i> Sign Out</Link>

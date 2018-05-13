@@ -5,11 +5,17 @@ const now = moment(new Date()).format('MM/DD/YYYY hh:mm');
 
 // USERS
 
-export const doCreateUser = (id, fullname, email) =>
-	db.ref(`users/${id}`).set({
+export const doCreateUser = (uid, fullname, email) =>
+	db.ref(`users/${uid}`).set({
 		fullname,
 		email,
 		headline: ''
+	});
+
+export const doUpdateUser = (uid, fullname, headline) =>
+	db.ref(`users/${uid}`).update({
+		fullname,
+		headline
 	});
 
 export const onceGetUsers = () =>

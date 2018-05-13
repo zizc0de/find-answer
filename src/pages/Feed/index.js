@@ -58,22 +58,19 @@ class Feed extends Component {
 
 	render() {
 		const { questions } = this.state;
-
+		const { authUser } = this.props;
+		
 		return (
 			<Layout>
-				<AuthUserContext.Consumer>
-					{authUser =>
-						<div className="row">
-							<div className="col-lg-6 mb-3 mb-lg-0">
-								<FeedPost userUid={authUser.uid} getData={this.fetch} />
-								{ !!questions && <QuestionsList questions={questions} /> }
-							</div>
-							<div className="col-lg-6">
-								sidebar content
-							</div>
-						</div>
-					}
-				</AuthUserContext.Consumer>
+				<div className="row">
+					<div className="col-lg-6 mb-3 mb-lg-0">
+						<FeedPost userUid={authUser.uid} getData={this.fetch} />
+						{ !!questions && <QuestionsList questions={questions} /> }
+					</div>
+					<div className="col-lg-6">
+						sidebar content
+					</div>
+				</div>
 			</Layout>
 		);
 	}
