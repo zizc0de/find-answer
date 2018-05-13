@@ -54,7 +54,7 @@ export const getQuestionsByUser = (uid) =>
 // QUESTION RESPONSE
 
 export const doCreateResponse = (userUid, questionUid, response) =>
-	db.ref(`questions_reponse`).push({
+	db.ref(`questions_response`).push({
 		userUid,
 		questionUid,
 		response,

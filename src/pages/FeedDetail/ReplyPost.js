@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import { db } from 'utils/firebase';
+
 const byPropKey = (propName, value) => () => ({
 	[propName]: value
 });
@@ -16,6 +18,15 @@ class ReplyPost extends Component {
 			},
 			error: null
 		};
+	}
+
+	resetButton = () => {
+		this.setState({
+			button: {
+				text: 'Reply',
+				disabled: false
+			}
+		});	
 	}
 
 	onSubmit = (event) => {
@@ -36,7 +47,24 @@ class ReplyPost extends Component {
 			response: response
 		}
 
-		console.log(data);
+		this.setState({
+			button: {
+				text: 'Loading...',
+				disabled: true
+			}
+		});
+		
+		db.doCreateResponse(data.userUid, data.questionUid, data.response)
+		.then(() => {
+			this.setState(() => ({
+				response: '',
+			}));
+			this.resetButton();			
+		})
+		.catch(error => {
+			this.setState(byPropKey('error', error));
+			this.resetButton();
+		})
 	}
 
 	render() {
