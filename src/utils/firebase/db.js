@@ -1,7 +1,7 @@
 import { db } from './firebase';
 import moment from 'moment';
 
-const now = moment(new Date()).format('MM/DD/YYYY hh:mm');
+const now = moment(new Date()).format('DD/MM/YYYY hh:mm');
 
 // USERS
 
