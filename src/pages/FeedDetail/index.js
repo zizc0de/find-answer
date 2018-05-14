@@ -14,7 +14,8 @@ class FeedDetail extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			detail: {}
+			detail: {},
+			response: []
 		}
 	}
 
@@ -23,6 +24,35 @@ class FeedDetail extends Component {
 			db.usersRef().child(userId).on('value', user => {resolve(user.val())});
 		});
 	};
+
+	getResponse = (uid) => {
+
+		db.getQuestionResponse(uid).on('value', (snap) => {
+			let values = snap.val();
+			let replyList = Object.keys(values).map(key => {
+				return {
+					key,
+					...values[key]
+				}
+			});
+
+			Promise.all(replyList.map(reply => {
+				return this.getUserById(reply.userUid).then((user) => {
+					return {
+						fullname: user.fullname,
+						...reply
+					}
+				});
+			})).then(replyList => {
+				replyList.reverse();
+				this.setState({
+					response: replyList
+				})
+			})
+
+		})
+
+	}
 
 	fetch = (uid) => {
 		db.getQuestionByUid(uid).then(snap => {
@@ -40,7 +70,7 @@ class FeedDetail extends Component {
 					detail: data
 				})
 			})
-
+			this.getResponse(uid);
 		})
 	}
 
@@ -50,7 +80,7 @@ class FeedDetail extends Component {
 	}
 
 	render() {
-		const { detail } = this.state;
+		const { detail, response } = this.state;
 		const { authUser } = this.props;
 		
 		return (
@@ -91,7 +121,7 @@ class FeedDetail extends Component {
 
 						<div className="row">
 							<div className="col-12">
-								<ReplyList />
+								{ !!response && <ResponseList replyList={response} />}
 							</div>
 						</div>
 
@@ -101,6 +131,15 @@ class FeedDetail extends Component {
 		);
 	}
 }
+
+const ResponseList = ({ replyList }) =>
+	<div>
+		{replyList.map((response) =>
+			<div key={response.key}>
+				<ReplyList response={response} />
+			</div>
+		)}
+	</div>
 
 const authCondition = (authUser) => !!authUser;
 

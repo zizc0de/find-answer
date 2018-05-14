@@ -59,5 +59,10 @@ export const doCreateResponse = (userUid, questionUid, response) =>
 		questionUid,
 		response,
 		vote: 0,
-		accepted: false
+		accepted: false,
+		createdAt: now,
+		updatedAt: ''		
 	})
+
+export const getQuestionResponse = (questionUid) =>
+	db.ref(`questions_response`).orderByChild('questionUid').equalTo(questionUid);
