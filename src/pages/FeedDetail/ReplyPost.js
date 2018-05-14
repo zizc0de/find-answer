@@ -91,15 +91,19 @@ class ReplyPost extends Component {
 				<div className="row mt-3">
 					<div className="col-12">
 						<form onSubmit={this.onSubmit}>
-							<textarea
-							className="form-control pl-0"
-							placeholder="Write a response..."
-							rows="4"
-							style={{ border: 'none', resize: 'none' }}
-							value={response}
-							onChange={event => this.setState(byPropKey('response', event.target.value))}
-							/>
-							<button type="submit" className="btn btn-md btn-rounded btn-outline-base mr-3" disabled={isInvalid}>{button.text}</button>
+							<div className="form-group">
+								<textarea
+								className="form-control pl-0"
+								placeholder="Write a response..."
+								rows="4"
+								style={{ border: 'none', resize: 'none' }}
+								value={response}
+								onChange={event => this.setState(byPropKey('response', event.target.value))}
+								/>
+							</div>
+							<div className="form-group mt-4">
+								<button type="submit" className="btn btn-md btn-rounded btn-outline-base mr-3" disabled={isInvalid}>{button.text}</button>
+							</div>
 							{/*<button className="btn btn-md btn-rounded btn-grey">Cancel</button>*/}
 						</form>
 					</div>

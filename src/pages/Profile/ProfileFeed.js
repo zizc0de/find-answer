@@ -18,9 +18,11 @@ class ProfileFeed extends Component {
 		};
 	}
 
-	getUserById = (userId) => {
+	getCountReply = (uid) => {
 		return new Promise(resolve => {
-			db.usersRef().child(userId).on('value', user => {resolve(user.val())});
+			db.getQuestionResponse(uid).once('value', snap => {
+				resolve(snap.numChildren());
+			});
 		});
 	};
 
@@ -58,13 +60,22 @@ class ProfileFeed extends Component {
 				};
 			});
 
-			questions.reverse();
-			this.setState({
-				status: 'unsolved',
-				questions
-			});
+			Promise.all(questions.map(question => {
+				return this.getCountReply(question.key).then((count) => {
+					return {
+						respondent: count,
+						...question
+					};
+				});
+			})).then(questions => {
+				questions.reverse();
+				this.setState({
+					status: 'unsolved',					
+					questions
+				});
+				this.filter('unsolved');				
+			})
 
-			this.filter('unsolved');
 		})
 		.catch(error => {
 			console.log(error);
@@ -96,7 +107,11 @@ class ProfileFeed extends Component {
 				</div>
 				<div className="row mb-3">
 					<div className="col-12">
-						{ !!filtered && <QuestionsList questions={filtered} />}
+						{ filtered.length > 0
+							?
+							<QuestionsList questions={filtered} />
+							: <p className="text-center">No data available</p>
+						}
 					</div>
 				</div>
 			</Layout>
@@ -110,12 +125,12 @@ const QuestionsList = ({ questions }) =>
 			<div className="box mb-3" key={question.key}>
 				<div className="box-body flex">
 					<div className="row">
-						<div className="col-md-6 flex-center">
+						<div className="col-md-6 flex-center mb-3 mb-md-0">
 							<h5 className="text-semiBold font-18 mb-0">{question.title}</h5>
 							<small className="color-grey">{question.createdAt}</small>
 						</div>
-						<div className="col-md-3 text-center flex-center">
-							<h3 className="color-primary mb-0 text-semiBold">0</h3>
+						<div className="col-md-3 text-center flex-center mb-3 mb-md-0">
+							<h3 className="color-primary mb-0 text-semiBold">{question.respondent}</h3>
 							<p className="mb-0">Respondent</p>
 						</div>
 						<div className="col-md-3 text-right flex-center">

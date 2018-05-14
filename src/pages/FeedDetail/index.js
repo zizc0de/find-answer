@@ -131,7 +131,7 @@ class FeedDetail extends Component {
 
 						<div className="row">
 							<div className="col-12">
-								{ !!response && <ResponseList replyList={response} question={detail} getData={this.getData} />}
+								{ !!response && <ResponseList userUid={authUser.uid} replyList={response} question={detail} getData={this.getData} />}
 							</div>
 						</div>
 
@@ -142,11 +142,11 @@ class FeedDetail extends Component {
 	}
 }
 
-const ResponseList = ({ replyList, question, getData }) =>
+const ResponseList = ({ replyList, question, userUid, getData }) =>
 	<div>
 		{replyList.map((response) =>
 			<div key={response.key}>
-				<ReplyList response={response} question={question} getData={getData} />
+				<ReplyList userUid={userUid} response={response} question={question} getData={getData} />
 			</div>
 		)}
 	</div>

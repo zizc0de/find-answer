@@ -32,7 +32,7 @@ class ReplyList extends Component {
 	}
 
 	render() {
-		const { response: detail, question } = this.props;
+		const { response: detail, question, userUid } = this.props;
 
 		return (
 			<div className="box box-shadow mb-3">
@@ -49,7 +49,7 @@ class ReplyList extends Component {
 						<p className="color-primary mb-0">
 							<i className="material-icons">grade</i> Solved by this
 						</p>
-						: question.status == 'unsolved' ?
+						: question.status == 'unsolved' && question.userUid == userUid ?
 						<button type="button" className="btn btn-md btn-base" onClick={this.solved}>Solved by this ?</button>
 						: ''
 					}

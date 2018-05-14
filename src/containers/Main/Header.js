@@ -6,7 +6,7 @@ import logo from 'assets/images/logo/logo.png';
 class Header extends Component {
 	render() {
 		return (
-			<nav className="navbar navbar-expand-lg navbar-white fixed-top">
+			<nav className="navbar navbar-expand navbar-white fixed-top">
 				<div className="container-fluid">
 					<Link className="navbar-brand" to="/questions">
 						<img src={logo} className="img-fluid" />
@@ -18,13 +18,9 @@ class Header extends Component {
 									<i className="material-icons" style={{ marginTop: 2 }}>notifications_none</i>
 								</Link>
 							</li>
-							<li className="nav-item dropdown">
-								<Link className="nav-link dropdown-toggle non-caret" to="/profile" id="navbarDropdown">
+							<li className="nav-item">
+								<Link className="nav-link" to="/profile">
 									<img src={require('assets/images/profile.png')} className="img-fluid rounded-circle" style={{ height: 30, width: 30, objectFit: 'cover' }} />
-									<div className="dropdown-menu">
-										<a className="dropdown-item" to="#">Profile</a>
-										<a className="dropdown-item" to="#">Sign Out</a>
-									</div>
 								</Link>
 							</li>
 						</ul>
