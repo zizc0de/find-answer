@@ -10,7 +10,7 @@ class ProfileLayout extends Component {
 		return (
 			<Layout>
 				<AuthUserContext.Consumer>
-					{context =>			
+					{context =>
 						<div className="row">
 							<div className="col-lg-4 mb-3 mb-lg-0">
 								<Sidebar authUser={context.state} />
