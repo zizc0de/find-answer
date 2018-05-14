@@ -20,7 +20,7 @@ class FeedItem extends Component {
 				</Link>
 				<div className="feed__content">
 					<p>
-						{detail.detail}
+						{ detail.detail.substring(0, 250) + "..." }
 					</p>
 				</div>
 				<div className="row mt-4">
@@ -32,7 +32,7 @@ class FeedItem extends Component {
 						</div>
 					</div>
 					<div className="col-md-4 text-md-right">
-						<button type="button" className="btn btn-base btn-rounded btn-shadow">Discuss</button>
+						<Link to={`/question/${detail.key}`} className="btn btn-base btn-rounded btn-shadow">Discuss</Link>
 					</div>
 				</div>
 			</div>

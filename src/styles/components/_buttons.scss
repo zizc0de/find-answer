@@ -26,6 +26,11 @@
 	background-color: #fff;
 	border-color: $primary_color;
 	color: $primary_color;
+	&:disabled {
+		background-color: #fff !important;
+		border-color: $primary_color !important;
+		color: $primary_color !important;
+	}	
 	&:hover,
 	&:focus {
 		background-color: $primary_color;

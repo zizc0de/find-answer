@@ -51,6 +51,11 @@ export const questionsRef = () =>
 export const getQuestionsByUser = (uid) =>
 	db.ref(`questions`).orderByChild('userUid').equalTo(uid).once('value');
 
+export const doUpdateQuestionStatus = (uid, status) =>
+	db.ref(`questions/${uid}`).update({
+		status
+	})
+
 // QUESTION RESPONSE
 
 export const doCreateResponse = (userUid, questionUid, response) =>
@@ -66,3 +71,8 @@ export const doCreateResponse = (userUid, questionUid, response) =>
 
 export const getQuestionResponse = (questionUid) =>
 	db.ref(`questions_response`).orderByChild('questionUid').equalTo(questionUid);
+
+export const questionSolved = (uid) =>
+	db.ref(`questions_response/${uid}`).update({
+		accepted: true
+	})

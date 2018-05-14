@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import nl2br from 'react-nl2br';
 
 import { MainLayout as Layout } from 'containers';
 import ReplyPost from './ReplyPost';
@@ -74,6 +75,10 @@ class FeedDetail extends Component {
 		})
 	}
 
+	getData = () => {
+		this.fetch(this.state.detail.key);
+	}
+
 	componentDidMount() {
 		const { match: { params } } = this.props;
 		this.fetch(params.uid);
@@ -90,7 +95,7 @@ class FeedDetail extends Component {
 
 						<div className="box box-shadow">
 							<div className="row">
-								<div className="col-12">
+								<div className="col-md-9">
 									<img src={require('assets/images/profile.png')} className="rounded-circle float-left" style={{ height: 65, width: 65, objectFit: 'cover' }} />
 									<div className="float-left ml-3">
 										<p className="mb-0 text-semiBold">{detail.fullname}</p>
@@ -98,11 +103,16 @@ class FeedDetail extends Component {
 										<p className="font-12 color-grey">{detail.createdAt}</p>
 									</div>
 								</div>
+							{detail.status == 'solved' &&
+								<div className="col-md-3 col-sm-6 text-left text-sm-right">
+									<button type="button" className="btn btn-md btn-outline-base" disabled="disabled">Solved</button>
+								</div>
+							}								
 							</div>
 							<div className="row mt-4">
 								<div className="col-12">
-									<h2 className="text-bold">{detail.title}</h2>
-									<p>{detail.detail}</p>
+									<h2 className="text-bold mb-3">{detail.title}</h2>
+									<p>{nl2br(detail.detail)}</p>
 								</div>
 							</div>
 						</div>
@@ -121,7 +131,7 @@ class FeedDetail extends Component {
 
 						<div className="row">
 							<div className="col-12">
-								{ !!response && <ResponseList replyList={response} />}
+								{ !!response && <ResponseList replyList={response} question={detail} getData={this.getData} />}
 							</div>
 						</div>
 
@@ -132,11 +142,11 @@ class FeedDetail extends Component {
 	}
 }
 
-const ResponseList = ({ replyList }) =>
+const ResponseList = ({ replyList, question, getData }) =>
 	<div>
 		{replyList.map((response) =>
 			<div key={response.key}>
-				<ReplyList response={response} />
+				<ReplyList response={response} question={question} getData={getData} />
 			</div>
 		)}
 	</div>
