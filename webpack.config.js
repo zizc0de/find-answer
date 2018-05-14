@@ -60,7 +60,7 @@ module.exports = {
 	new webpack.NamedModulesPlugin(),
 	new webpack.HotModuleReplacementPlugin(),
 	new HtmlWebpackPlugin({
-		template: "./src/index.html",
+		template: "./public/index.html",
 		filename: "./index.html"
 	}),
 	new MiniCssExtractPlugin({

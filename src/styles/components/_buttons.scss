@@ -6,6 +6,7 @@
 	}
 	&.btn-lg {
 		line-height: 3em;
+		min-width: 170px;
 	}
 	&.btn-shadow {
 		box-shadow: 0 5px 16px -10px rgba(0,0,0,0.5);
@@ -23,11 +24,11 @@
 }
 
 .btn-outline-base {
-	background-color: #fff;
+	background-color: transparent;
 	border-color: $primary_color;
 	color: $primary_color;
 	&:disabled {
-		background-color: #fff !important;
+		background-color: transparent !important;
 		border-color: $primary_color !important;
 		color: $primary_color !important;
 	}	
