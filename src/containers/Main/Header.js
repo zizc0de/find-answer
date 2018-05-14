@@ -17,7 +17,7 @@ class Header extends Component {
 							</Link>
 							<div className="collapse navbar-collapse" id="navbarCollapse">					
 								<ul className="navbar-nav ml-auto">
-									<li className="nav-item mr-2">
+									<li className="nav-item mr-2 d-none d-sm-inline-block">
 										<Link className="nav-link" to="#">
 											<i className="material-icons" style={{ marginTop: 2 }}>notifications_none</i>
 										</Link>
@@ -25,7 +25,7 @@ class Header extends Component {
 									<li className="nav-item">
 										<Link className="nav-link" to="/profile">
 											<img src={require('assets/images/profile.png')} className="img-fluid rounded-circle" style={{ height: 30, width: 30, objectFit: 'cover' }} />
-											<span className="ml-2">{ 'Hello ' + context.state.detail.fullname.split(' ').slice(-1).join(' ') + '!'}</span>
+											<span className="ml-2 d-none d-sm-inline-block">{ 'Hello ' + context.state.detail.fullname.split(' ').slice(-1).join(' ') + '!'}</span>
 										</Link>
 									</li>
 								</ul>

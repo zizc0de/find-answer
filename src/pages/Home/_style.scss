@@ -1,4 +1,22 @@
+@import "../../styles/bases/_variables.scss";
+
+.navbar-home {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .bg-home {
 	background-color: #F0F7FA;
 	height: 100vh;
+}
+
+@media (max-width: $breakpoint-mobile) {
+	.navbar-home {
+		position: relative;
+	}
 }

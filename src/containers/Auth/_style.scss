@@ -27,4 +27,11 @@
 	.auth-content {
 		width: 100%;
 	}
+	.container-fluid {
+		height: auto !important;
+	}
+	.auth-container {
+		display: block;
+		height: auto;
+	}
 }

@@ -9,14 +9,14 @@ class Home extends Component {
 	render() {
 		return (
 			<div>
-				<nav className="navbar fixed-top" style={{ minHeight: 85 }}>
+				<nav className="navbar navbar-home" style={{ minHeight: 85 }}>
 					<div className="container">
 						<div className="navbar-brand">
-							<img src={logo} className="img-fluid" style={{ height: 35}} />
+							<img src={logo} className="img-fluid" style={{ height: 30 }} />
 						</div>
 					</div>
 				</nav>
-				<div class="bg-home">
+				<div className="bg-home">
 					<div className="container h-100">
 						<div className="row h-100">
 							<div className="col-lg-6 col-md-7" style={{flexDirection: 'column', alignSelf: 'center' }}>
