@@ -72,6 +72,9 @@ export const doCreateResponse = (userUid, questionUid, response) =>
 export const getQuestionResponse = (questionUid) =>
 	db.ref(`questions_response`).orderByChild('questionUid').equalTo(questionUid);
 
+export const getLatestResponse = () =>
+	db.ref(`questions_response`).orderByChild('accepted').equalTo(true).limitToLast(10).once('value');
+
 export const questionSolved = (uid) =>
 	db.ref(`questions_response/${uid}`).update({
 		accepted: true

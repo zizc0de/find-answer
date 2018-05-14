@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { MainLayout as Layout } from 'containers';
 import FeedPost from './FeedPost';
 import FeedItem from './FeedItem';
+import Sidebar from './Sidebar';
 
 import withAuthorization from 'components/Session/withAuthorization';
 
@@ -67,7 +68,7 @@ class Feed extends Component {
 						{ !!questions && <QuestionsList questions={questions} /> }
 					</div>
 					<div className="col-lg-6">
-						sidebar content
+						<Sidebar />
 					</div>
 				</div>
 			</Layout>
